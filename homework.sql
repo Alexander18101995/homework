@@ -18,7 +18,7 @@ create table Tracks
   Track_id int primary key,
   Albums_id int references Albums(Albums_id),
   Title varchar (50),
-  Times int not null
+  Times time not null
 );
 
 create table Genre 
