@@ -10,7 +10,7 @@ where times = (select max(times)
 --3 название треков, продолжительность которых не менее 3,5 минуты;
 select title 
 from tracks 
-where times < 3,50
+where times >= 3,50
 --4 названия сборников, вышедших в период с 2018 по 2020 год включительно;
 select collection_name 
 from colletction 
