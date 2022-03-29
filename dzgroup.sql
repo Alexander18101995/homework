@@ -38,7 +38,7 @@ join artist_albums aa on aa.artist_id = ar.artist_id
 join albums al on al.albums_id = aa.albums_id
 group by al.album_name
 having count(gn.genre_name) > 1
--- 7наименование треков, которые не входят в сборники;
+-- 7 наименование треков, которые не входят в сборники;
 select tr.title from tracks tr
 left join tracks_collection tc on tc.track_id = tr.track_id
 left join collection cl on cl.collection_id = tc.collection_id
@@ -50,9 +50,20 @@ join artist_albums aa on aa.albums_id = ar.artist_id
 join tracks tr on tr.albums_id = aa.albums_id
 where tr.times = (select min(times)
                   from tracks)
--- 9название альбомов, содержащих наименьшее количество треков.
-select al.album_name,count(tr.track_id) 
-from albums al 
-join tracks tr on tr.albums_id = al.albums_id
-group by al.albums_id
-having count(tr.track_id) < 2
+-- 9 название альбомов, содержащих наименьшее количество треков.
+select distinct al.album_name
+from albums  al
+left join tracks tr on tr.albums_id = al.albums_id
+where tr.albums_id in (select albums_id
+                       from tracks
+                       group by albums_id
+                       having count(albums_id) = (select count(albums_id)
+												                          from tracks
+												                          group by albums_id
+												                          order by count
+												                          limit 1
+												                         )
+					          )
+   														 
+												
+order by al.album_name
