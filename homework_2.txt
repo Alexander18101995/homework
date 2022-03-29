@@ -16,7 +16,7 @@ create table Tracks
   Track_id int primary key,
   Albums_id int references Albums(Albums_id),
   Title varchar (50),
-  Times text not null
+  Times time not null
 );
 
 create table Genre 
@@ -27,23 +27,23 @@ create table Genre
 
 create table Artist_Genre 
 (
+  Artist_Genre_id int not null primary key,
   Artist_id int not null references Artist(Artist_id),
-  Genre_id int not null references Genre(Genre_id),
-  constraint pk primary key (Artist_id,Genre_id_id)
+  Genre_id int not null references Genre(Genre_id)
 );
 
 create table Artist_Albums
 (
+  Artist_Albums_id int not null primary key,
   Artist_id int not null references Artist(Artist_id),
-  Albums_id int not null references Albums(Albums_id),
-  constraint pk primary key (Artist_id,Albums_id)
+  Albums_id int not null references Albums(Albums_id)
 );
 
 create table Tracks_Collection
 (
+  Tracks_Collection_id int not null primary key,
   Tracks_id int not null references Tracks(Tracks_id),
-  Collection_id int not null references Collection(Collection_id),
-  constraint pk primary key (Tracks_id,Collection_id)
+  Collection_id int not null references Collection(Collection_id)
 );
 
 create table Collection
