@@ -58,12 +58,12 @@ where tr.albums_id in (select albums_id
                        from tracks
                        group by albums_id
                        having count(albums_id) = (select count(albums_id)
-												                          from tracks
-												                          group by albums_id
-												                          order by count
-												                          limit 1
-												                         )
-					          )
+						  from tracks
+						  group by albums_id
+						  order by count
+						  limit 1
+						 )
+		     )
    														 
 												
 order by al.album_name
