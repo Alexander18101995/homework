@@ -57,3 +57,43 @@ values
 (7, 'Dad',   2019),
 (8, 'Ki',    2010),
 
+insert into artist_genre (artist_genre_id,artist_id, genre_id)
+values 
+(1,1,1),
+(2,2,2),
+(3,3,5),
+(4,4,5),
+(5,5,2),
+(6,6,1),
+(7,7,4),
+(8,8,3)
+
+insert into artist_albums (artist_albums_id,artist_id, albums_id)
+values 
+(1,1,1),
+(2,2,2),
+(3,3,5),
+(4,4,5),
+(5,5,2),
+(6,6,1),
+(7,7,4),
+(8,8,3)
+
+insert into Tracks_Collection ( Tracks_Collection_id,Track_id,Collection_id)
+values 
+(1,1,1),
+(2,2,2),
+(3,5,3),
+(4,4,4),
+(5,5,5),
+(6,6,6),
+(7,7,7),
+(8,8,8),
+(9,9,7),
+(10,10,6),
+(11,11,5),
+(12,12,4),
+(13,13,3),
+(14,14,2),
+(15,15,1)
+
