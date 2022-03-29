@@ -57,7 +57,7 @@ left join tracks tr on tr.albums_id = al.albums_id
 where tr.albums_id in (select albums_id
                        from tracks
                        group by albums_id
-                       having count(albums_id) = (select count(albums_id)
+                       having count(albums_id) = (select count(track_id)
 						  from tracks
 						  group by albums_id
 						  order by count
