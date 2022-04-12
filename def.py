@@ -25,16 +25,21 @@ elif comand == 'l':
   list()
 elif comand == 's':
   def shelf():
-    shelf = input("Введитн номер документа ")
+    shelf = input("Введитe номер документа ")
     for s in directories.items():
       if shelf in s[1]:
        print(s[0]) 
   shelf()
 elif comand == 'a':
-  def add():
-    x = list(input("Тип, номер, имя, полку(Через запятую)  ").split(", "))
+ def add():
+  x = list(input("Тип, номер, имя, полку(Через запятую)  ").split(", "))
+  if x[3] <= '3':
+   documents.append({"type": x[0], "number": x[1], "name": x[2]})
+   directories[x[3]].append(x[1])
+  elif x[3] > '3':
+    directories[x[3]] = []
     documents.append({"type": x[0], "number": x[1], "name": x[2]})
     directories[x[3]].append(x[1])
-    print(documents)
-    print(directories)
-  add()
+  print(documents)
+  print(directories)
+ add()
