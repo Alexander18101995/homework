@@ -12,34 +12,31 @@ directories = {
 
 comand = input('Введите команду: ')
 if comand == 'p':
-  def people():
-    number = input('Введите номер: ')
-    for doc in documents:
-      if number == doc['number']:
-         print(doc['name'])
-  people()        
+ def people(number):
+  for doc in documents:
+   if number == doc['number']:
+    print(doc['name'])  
+ people(input('Введите номер: '))          
 elif comand == 'l':
-  def list():
+  def list(l):
     for doc in documents:
       print(doc['type'], doc['number'], doc['name'])     
-  list()
+  list(documents)
 elif comand == 's':
-  def shelf():
-    shelf = input("Введитe номер документа ")
-    for s in directories.items():
-      if shelf in s[1]:
-       print(s[0]) 
-  shelf()
+ def shelf(s):
+  for dir in directories.items():
+    if s in dir[1]:
+      print(dir[0]) 
+ shelf(input("Введитe номер документа: "))   
 elif comand == 'a':
- def add():
-  x = list(input("Тип, номер, имя, полку(Через запятую)  ").split(", "))
-  if x[3] <= '3':
-   documents.append({"type": x[0], "number": x[1], "name": x[2]})
-   directories[x[3]].append(x[1])
-  elif x[3] > '3':
-    directories[x[3]] = []
-    documents.append({"type": x[0], "number": x[1], "name": x[2]})
-    directories[x[3]].append(x[1])
+ def add(a):
+  if a[3] <= '3':
+   documents.append({"type": a[0], "number": a[1], "name": a[2]})
+   directories[a[3]].append(a[1])
+  elif a[3] > '3':
+    directories[a[3]] = []
+    documents.append({"type": a[0], "number": a[1], "name": a[2]})
+    directories[a[3]].append(a[1])
   print(documents)
   print(directories)
- add()
+ add(list(input("Тип, номер, имя, полку(Через запятую)  ").split(", ")))
