@@ -12,16 +12,17 @@ directories = {
 def people(number):
   for doc in documents:
     if number == doc['number']:
-      print(doc['name']) 
+      return doc['name']
       
 def list(l):
   for doc in documents:
     print(doc['type'], doc['number'], doc['name']) 
+  return doc
 
 def shelf(s):
   for dir in directories.items():
     if s in dir[1]:
-      print(dir[0]) 
+      return dir[0]
 
 def add(a):
   if a[3] in directories.keys():
@@ -42,7 +43,7 @@ def main():
     if team == 'p':
       print(people(input('Введите номер: ')))
     elif team == 'l':
-      print(list(documents))
+      list(documents)
     elif team == 's':
       print(shelf(input("Введитe номер документа: ")))
     elif team == 'a':
