@@ -24,7 +24,8 @@ def shelf(s):
     if s in dir[1]:
       return dir[0]
 
-def add(a):
+def add():
+  a = input("Тип, номер, имя, полку(Через запятую) ").split(", ")
   if a[3] in directories.keys():
         documents.append({"type": a[0], "number": a[1], "name": a[2]})
         directories[a[3]].append(a[1])
@@ -47,7 +48,7 @@ def main():
     elif team == 's':
       print(shelf(input("Введитe номер документа: ")))
     elif team == 'a':
-      print(add(input("Тип, номер, имя, полку(Через запятую) ").split(", ")))
+      add()
     elif team == 'e':
       print('До свидания!')
       break                
